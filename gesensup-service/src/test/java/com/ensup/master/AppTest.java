@@ -12,7 +12,7 @@ public class AppTest {
 	
     
     @Test
-    public void Check() {
+    public void StudentAllListCheck() {
     	
     	
     }
