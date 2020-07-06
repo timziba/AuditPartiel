@@ -114,7 +114,7 @@ public class AppTest {
 		Student student1 = service.getUser("ozdok@yahoo.fr");
 
 		Assertions.assertEquals(student1.getMailAdresse(), "ozdok@yahoo.fr");
-		Mockito.verify(dao).readAllStudent();
+		Mockito.verify(dao).getUser("ozdok@yahoo.fr");
 
 	}
 
