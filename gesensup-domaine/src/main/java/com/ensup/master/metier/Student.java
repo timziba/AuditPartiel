@@ -18,6 +18,17 @@ public class Student extends Person {
 		this.dateOfBirth = dateOfBirth;
 	}
 
+	
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Student [dateOfBirth=" + dateOfBirth + ", getId()=" + getId() + ", getFirstName()=" + getFirstName()
