@@ -1,5 +1,7 @@
 package com.ensup.master.dao;
 
+import com.ensup.master.metier.Course;
+
 /**
  * Interface CourseDao
  * 
@@ -8,4 +10,5 @@ package com.ensup.master.dao;
  */
 public interface ICourseDao {
 
+	public void associateCourse(Course course,int id);
 }

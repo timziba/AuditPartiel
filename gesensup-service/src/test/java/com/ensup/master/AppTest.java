@@ -8,7 +8,6 @@ import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.StudentService;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,11 +21,11 @@ public class AppTest {
 
 	IStudentDao dao = Mockito.mock(IStudentDao.class);
 	StudentService service = new StudentService(dao);
-	
+
 	@Test
 	public void StudentAllListCheck() {
 
-		List<Student> list = new ArrayList<Student>();
+		ArrayList<Student> list = new ArrayList<Student>();
 		list.add(new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", new Date()));
 
@@ -36,7 +35,6 @@ public class AppTest {
 
 		Assertions.assertEquals(students.get(0).getFirstName(), "OBERLE");
 		Mockito.verify(dao).readAllStudent();
-	}
 
 	}
 
@@ -46,9 +44,10 @@ public class AppTest {
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", new Date());
 
+		Mockito.doNothing().when(dao).createStudent(Mockito.isA(Student.class));
 		service.createStudent(student);
 
-		Mockito.verify(dao).createEtudiant(student);
+		Mockito.verify(dao).createStudent(student);
 	}
 
 	@Test
@@ -56,9 +55,10 @@ public class AppTest {
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", new Date());
 
-		service.updateEtudiant(etudiant);
+		Mockito.doNothing().when(dao).updateStudent(Mockito.isA(Student.class));
+		service.updateStudent(student);
 
-		Mockito.verify(dao).updateStudent(etudiant);
+		Mockito.verify(dao).updateStudent(student);
 	}
 
 	@Test
@@ -66,7 +66,8 @@ public class AppTest {
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", new Date());
-		
+
+		Mockito.doNothing().when(dao).deleteStudent(Mockito.isA(Integer.class));
 		service.deleteStudent(1);
 
 		Mockito.verify(dao).deleteStudent(1);
@@ -78,27 +79,43 @@ public class AppTest {
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", new Date());
 
-		Mockito.when(dao.getStudent(student)).thenReturn(student);
+		Mockito.when(dao.getStudent(1)).thenReturn(student);
 
-		Student student = service.getStudent(student);
+		Student student1 = service.getStudent(1);
 
-		Assertions.assertEquals(student.getId(), 1);
-		Mockito.verify(dao).getStudent(student);
+		Assertions.assertEquals(student1.getId(), 1);
+		Mockito.verify(dao).getStudent(student.getId());
 	}
 
 	@Test
 	public void studentCourseCreationCheck() {
-		
+
 		ICourseDao courseDao = Mockito.mock(ICourseDao.class);
 		CourseService courseService = new CourseService(courseDao);
-		
+
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", new Date());
 		Course course = new Course("JAVA", 40);
 
+		Mockito.doNothing().when(courseDao).associateCourse(Mockito.isA(Course.class), Mockito.isA(Integer.class));
 		courseService.associateCourse(course, student.getId());
 
 		Mockito.verify(courseDao).associateCourse(course, student.getId());
+	}
+	
+	@Test
+	public void getUserCheck() {
+
+		Student student = new Student(1, "OZDOK", "Bertrand", "ozdok@yahoo.fr", "Saint cyr 10 rue des fermiers",
+				"01 02 03 04 05", new Date());
+
+		Mockito.when(dao.getUser("ozdok@yahoo.fr")).thenReturn(student);
+
+		Student student1 = service.getUser("ozdok@yahoo.fr");
+
+		Assertions.assertEquals(student1.getMailAdresse(), "ozdok@yahoo.fr");
+		Mockito.verify(dao).readAllStudent();
+
 	}
 
 }

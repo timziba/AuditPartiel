@@ -17,6 +17,11 @@ public class CourseService {
 		this.dao = dao;
 	}
 
+	/**
+	 * associate course 
+	 * @param course
+	 * @param id
+	 */
 	public void associateCourse(Course course, int id) {
 		dao.associateCourse(course, id);
 	}

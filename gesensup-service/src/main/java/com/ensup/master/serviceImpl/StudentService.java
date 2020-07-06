@@ -3,7 +3,6 @@ package com.ensup.master.serviceImpl;
 import java.util.List;
 
 import com.ensup.master.dao.IStudentDao;
-import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 
 /**
@@ -19,6 +18,10 @@ public class StudentService {
 	public StudentService(IStudentDao dao) {
 		this.dao = dao;
 	}
+	
+	public void createStudent(Student student) {
+		dao.createStudent(student);
+	}
 
 	/**
 	 * Read all informations of all students
@@ -33,16 +36,16 @@ public class StudentService {
 	 * Upadate a student information
 	 * @param student
 	 */
-	public void updateEtudiant(Student student) {
-		dao.updateEtudiant(student);
+	public void updateStudent(Student student) {
+		dao.updateStudent(student);
 	}
 
-	/**
+	/**	
 	 * delete a student information
 	 * @param i
 	 */
-	public void deleteStudent(Student student) {
-		dao.deleteStudent(student);		
+	public void deleteStudent(int id) {
+		dao.deleteStudent(id);		
 	}
 
 	/**
@@ -53,5 +56,15 @@ public class StudentService {
 	public Student getStudent(int i) {
 		// TODO Auto-generated method stub
 		return dao.getStudent(i);
+	}
+
+	/**
+	 * get user
+	 * @param email
+	 * @return
+	 */
+	public Student getUser(String email) {
+		
+		return dao.getUser(email);
 	}
 }
