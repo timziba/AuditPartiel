@@ -1,7 +1,14 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
+import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.StudentService;
 
 /**
@@ -22,12 +31,13 @@ public class AjoutEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentService studentService;
 	private RequestDispatcher dispatcher = null;
-
+	private CourseService courseService;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AjoutEtudiantServlet() {
 		studentService = new StudentService();
+		courseService = new CourseService();
 	}
 
 	/**
@@ -46,25 +56,42 @@ public class AjoutEtudiantServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Student student = new Student(null, 
-				request.getParameter("firstName"), 
-				request.getParameter("lastName"), 
-				request.getParameter("mailAdresse"),
-				request.getParameter("adress"), 
-				request.getParameter("numberPhone"),
-				new Date()
-				);
-		
+		Student student = new Student(null, request.getParameter("firstName"), request.getParameter("lastName"),
+				request.getParameter("mailAdresse"), request.getParameter("adress"),
+				request.getParameter("numberPhone"), request.getParameter("dateOfBirth"));
+
 		HttpSession session = request.getSession();
 		session.setAttribute("student", null);
+
+		studentService.createStudent(student);
+
+		session.setAttribute("students", lister());
+		session.setAttribute("courses", getAllCourses());
 		
-		if (request.getParameter("id") != null) {
-			studentService.createStudent(student);
-		} else {
-			studentService.updateStudent(student);
-		}
 		dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		dispatcher.forward(request, response);
 	}
 
+	private List<Student> lister() {
+
+		List<Student> students = Collections.emptyList();
+		try {
+			students = studentService.readAllStudent();
+		} catch (Exception e) {
+
+		}
+		return students;
+	}
+
+	private List<Course> getAllCourses() {
+
+		List<Course> courses = Collections.emptyList();
+		try {
+
+			courses = courseService.getAllCourses();
+		} catch (Exception e) {
+
+		}
+		return courses;
+	}
 }

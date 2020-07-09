@@ -62,8 +62,15 @@ public class StudentDao {
 			rs = st.executeQuery(sql);
 			
 			if(rs.next()) {
-				return new Student(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("mailAdresse"),
-									rs.getString("adress"), rs.getString("numberPhone"), rs.getDate("dateOfBirth"));
+				return new Student(
+						rs.getInt("id"), 
+						rs.getString("firstName"), 
+						rs.getString("lastName"), 
+						rs.getString("mailAdresse"),
+						rs.getString("adress"), 
+						rs.getString("numberPhone"), 
+						rs.getDate("dateOfBirth")
+						);
 			}
 			cn.close();
 			st.close();
@@ -128,7 +135,7 @@ public class StudentDao {
 			
 			while(rs.next()) {
 				students.add(new Student(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("mailAdresse"),
-						rs.getString("adress"), rs.getString("numberPhone"), rs.getDate("dateOfBirth")));
+						rs.getString("adress"), rs.getString("numberPhone"), rs.getString("dateOfBirth")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

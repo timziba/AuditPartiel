@@ -24,7 +24,7 @@
 			<!--Table head-->
 			<thead>
 				<tr>
-					<th>#</th>
+					
 					<th>Id</th>
 					<th>First Name</th>
 					<th>Last Name</th>
@@ -52,11 +52,6 @@
 					
 				%>
 				<tr>
-					<td scope="row">
-						<%
-							i++;
-						%>
-					</td>
 					<td><%=student.getId()%></td>
 					<td><%=student.getFirstName()%></td>
 					<td><%=student.getLastName()%></td>
@@ -69,7 +64,12 @@
 						<ul>
 							<li><a href="etudiantAjout.jsp">Edit</a></li>
 						</ul>
-						
+						<ul>
+							<li><a href="etudiantAjout.jsp" style="color: red">Delete</a></li>
+						</ul>
+						<ul>
+							<li><a href="etudiantAjout.jsp" style="color: blue">View</a></li>
+						</ul>
 						
 					</td>
 				</tr>

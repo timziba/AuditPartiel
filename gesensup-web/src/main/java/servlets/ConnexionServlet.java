@@ -28,7 +28,7 @@ public class ConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService;
 	private StudentService studentService;
-	CourseService courseService;
+	private CourseService courseService;
 	private RequestDispatcher dispatcher = null;
 
 	/**

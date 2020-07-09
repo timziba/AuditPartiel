@@ -4,6 +4,8 @@
 <!-- Navigation-->
 <%@include file="menuhaut.jsp"%>
 
+<!-- Début ajout etudiant -->
+
 <div class="container">
 	<br /> <br /> <br /> <br /> <br /> <br />
 
@@ -14,7 +16,7 @@
 	<!-- Masthead Heading-->
 	<h1>Ajouter un étudiant</h1>
 	
-	<!-- Card -->
+	
 	<div class="">
 	
 		<div class="pt-4 pb-3">
@@ -57,7 +59,7 @@
 				
 				<div class="md-form md-outline mt-0">
 					<input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control">
-					<label for="dateOfBirth">Birth Date</label>
+					<label for="dateOfBirth">Birth Date - format(yyyy-mm-dd)</label>
 				</div>
 			
 								
@@ -76,6 +78,7 @@
 	<!-- Card -->
 
 </div>
+<!-- Fin ajout etudiant -->
 
 <!-- footer -->
 <%@include file="footer.jsp"%>
