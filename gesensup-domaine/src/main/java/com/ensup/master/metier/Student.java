@@ -12,7 +12,7 @@ public class Student extends Person {
 
 	private Date dateOfBirth;
 
-	public Student(int id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
+	public Student(Integer id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
 			Date dateOfBirth) {
 		super(id, firstName, lastName, mailAdresse, adress, numberPhone);
 		this.dateOfBirth = dateOfBirth;

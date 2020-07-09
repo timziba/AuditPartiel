@@ -39,7 +39,7 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.ensup.master</groupId>
+			<groupId>${project.groupId}</groupId>
 			<artifactId>gesEnsup-domaine</artifactId>
 		</dependency>
 

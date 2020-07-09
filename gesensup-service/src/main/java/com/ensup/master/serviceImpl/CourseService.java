@@ -1,6 +1,9 @@
 package com.ensup.master.serviceImpl;
 
+import java.util.List;
+
 import com.ensup.master.dao.ICourseDao;
+import com.ensup.master.daoImpl.CourseDao;
 import com.ensup.master.metier.Course;
 
 /**
@@ -11,10 +14,16 @@ import com.ensup.master.metier.Course;
  */
 public class CourseService {
 
-	ICourseDao dao;
+	ICourseDao idao;
+	CourseDao dao;
 	
-	public CourseService(ICourseDao dao) {
+	public CourseService(CourseDao dao) {
 		this.dao = dao;
+	}
+
+	public CourseService() {
+		super();
+		dao = new CourseDao();
 	}
 
 	/**
@@ -24,6 +33,10 @@ public class CourseService {
 	 */
 	public void associateCourse(Course course, int id) {
 		dao.associateCourse(course, id);
+	}
+
+	public List<Course> getAllCourses() {		
+		return dao.getAllCourses();
 	}
 
 }

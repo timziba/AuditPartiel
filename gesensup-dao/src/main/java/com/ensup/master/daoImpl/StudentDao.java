@@ -27,7 +27,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "INSERT INTO ds_user (user_firstname, user_lastname, user_mail,user_adress,user_phone,user_birthdate) VALUES ('"+ student.getFirstName() +"', '"+ student.getLastName() +"', '"+ student.getMailAdresse() +"', '"+ student.getAdress() +"', '"+ student.getNumberPhone() +"', '"+ student.getDateOfBirth() +"')";
+			String sql = "INSERT INTO person (firstName, lastName, mailAdresse,adress,numberPhone,dateOfBirth) VALUES ('"+ student.getFirstName() +"', '"+ student.getLastName() +"', '"+ student.getMailAdresse() +"', '"+ student.getAdress() +"', '"+ student.getNumberPhone() +"', '"+ student.getDateOfBirth() +"')";
 			
 			st.executeUpdate(sql);
 			
@@ -57,13 +57,13 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user WHERE user_id = '"+ id +"'";
+			String sql = "SELECT * FROM person WHERE id = '"+ id +"'";
 			
 			rs = st.executeQuery(sql);
 			
 			if(rs.next()) {
-				return new Student(rs.getInt("user_id"), rs.getString("user_firstname"), rs.getString("user_lastname"), rs.getString("user_email"),
-									rs.getString("user_address"), rs.getString("user_phone"), rs.getDate("user_birthdate"));
+				return new Student(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("mailAdresse"),
+									rs.getString("adress"), rs.getString("numberPhone"), rs.getDate("dateOfBirth"));
 			}
 			cn.close();
 			st.close();
@@ -90,13 +90,13 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user WHERE user_email= '"+ email +"'";
+			String sql = "SELECT * FROM person WHERE mailAdresse= '"+ email +"'";
 			
 			rs = st.executeQuery(sql);
 			
 			if(rs.next()) {
-				return (new Student(rs.getInt("user_id"), rs.getString("user_firstname"), rs.getString("user_lastname"), rs.getString("user_email"),
-						rs.getString("user_address"), rs.getString("user_phone"), rs.getDate("user_birthdate")));
+				return (new Student(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("mailAdresse"),
+						rs.getString("adress"), rs.getString("numberPhone"), rs.getDate("dateOfBirth")));
 			}
 			cn.close();
 			st.close();
@@ -123,12 +123,12 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "SELECT * FROM ds_user";
+			String sql = "SELECT * FROM person";
 			rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				students.add(new Student(rs.getInt("user_id"), rs.getString("user_firstname"), rs.getString("user_lastname"), rs.getString("user_email"),
-						rs.getString("user_address"), rs.getString("user_phone"), rs.getDate("user_birthdate")));
+				students.add(new Student(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("mailAdresse"),
+						rs.getString("adress"), rs.getString("numberPhone"), rs.getDate("dateOfBirth")));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -157,7 +157,7 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "DELETE FROM ds_ user WHERE user_id = '"+ id +"'";
+			String sql = "DELETE FROM person WHERE id = '"+ id +"'";
 			
 			st.executeUpdate(sql);
 			
@@ -190,8 +190,8 @@ public class StudentDao {
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
 			
-			String sql = "UPDATE ds_user set user_firstname ='"+student.getFirstName()+"', user_lastname= '"+student.getLastName()+"', user_mail='"+student.getMailAdresse()+"',"
-						+ "	user_adress= '"+student.getAdress()+"',user_phone = '"+student.getNumberPhone()+"',user_birthdate='"+student.getLastName()+"' where user_id='"+student.getId() +"'" ;
+			String sql = "UPDATE person set firstName ='"+student.getFirstName()+"', lastName= '"+student.getLastName()+"', mailAdresse='"+student.getMailAdresse()+"',"
+						+ "	adress= '"+student.getAdress()+"',numberPhone = '"+student.getNumberPhone()+"',dateOfBirth='"+student.getLastName()+"' where id='"+student.getId() +"'" ;
 			resultat=st.executeUpdate(sql);
 			if(resultat==0) {
 				System.out.println("Aucune modification n'a était faite");

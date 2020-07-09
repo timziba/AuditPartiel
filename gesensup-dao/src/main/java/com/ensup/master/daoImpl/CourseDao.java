@@ -2,10 +2,14 @@ package com.ensup.master.daoImpl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ensup.master.metier.Course;
+import com.ensup.master.metier.User;
 
 public class CourseDao {
 
@@ -42,6 +46,41 @@ public class CourseDao {
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	public List<Course> getAllCourses() {
+		Connection cn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		List<Course> courses = null;
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			cn = DriverManager.getConnection(url, sql_login, sql_password);
+			
+			st = cn.createStatement();
+			
+			String sql = "SELECT * FROM `course`";
+		
+			rs = st.executeQuery(sql);
+			courses = new ArrayList<Course>();
+			while(rs.next()) {
+				Course course = new Course(rs.getString("themeCourse"), rs.getInt("numberHours"));
+				courses.add(course);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e ) {
+			e.printStackTrace();
+		} finally {
+			try {
+				cn.close();
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return courses;
 	}
 	
 	

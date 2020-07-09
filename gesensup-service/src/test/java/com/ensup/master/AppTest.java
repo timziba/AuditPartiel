@@ -2,8 +2,10 @@ package com.ensup.master;
 
 import org.mockito.Mockito;
 
-import com.ensup.master.dao.ICourseDao;
+
 import com.ensup.master.dao.IStudentDao;
+import com.ensup.master.daoImpl.CourseDao;
+import com.ensup.master.daoImpl.StudentDao;
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.serviceImpl.CourseService;
@@ -19,7 +21,7 @@ import org.junit.jupiter.api.Test;
  */
 public class AppTest {
 
-	IStudentDao dao = Mockito.mock(IStudentDao.class);
+	StudentDao dao = Mockito.mock(StudentDao.class);
 	StudentService service = new StudentService(dao);
 
 	@Test
@@ -90,7 +92,7 @@ public class AppTest {
 	@Test
 	public void studentCourseCreationCheck() {
 
-		ICourseDao courseDao = Mockito.mock(ICourseDao.class);
+		CourseDao courseDao = Mockito.mock(CourseDao.class);
 		CourseService courseService = new CourseService(courseDao);
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",

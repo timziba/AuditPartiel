@@ -3,6 +3,14 @@
 	<name>gesEnsup</name>
 	<comment></comment>
 	<projects>
+		<project>demoMockitoAvecJunit5</project>
+		<project>monEtudiant</project>
+		<project>monEtudiant-dao</project>
+		<project>monEtudiant-domaine</project>
+		<project>monEtudiant-service</project>
+		<project>monEtudiant-web</project>
+		<project>Servers</project>
+		<project>test</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

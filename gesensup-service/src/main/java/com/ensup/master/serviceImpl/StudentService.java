@@ -3,6 +3,7 @@ package com.ensup.master.serviceImpl;
 import java.util.List;
 
 import com.ensup.master.dao.IStudentDao;
+import com.ensup.master.daoImpl.StudentDao;
 import com.ensup.master.metier.Student;
 
 /**
@@ -13,12 +14,18 @@ import com.ensup.master.metier.Student;
  */
 public class StudentService {
 
-	IStudentDao dao;
+	IStudentDao idao;
+	StudentDao dao;
 	
-	public StudentService(IStudentDao dao) {
+	public StudentService(StudentDao dao) {
 		this.dao = dao;
 	}
 	
+	public StudentService() {
+		super();
+		dao = new StudentDao();
+	}
+
 	public void createStudent(Student student) {
 		dao.createStudent(student);
 	}

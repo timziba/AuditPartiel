@@ -1,5 +1,7 @@
 package com.ensup.master.dao;
 
+import java.util.List;
+
 import com.ensup.master.metier.Course;
 
 /**
@@ -11,4 +13,6 @@ import com.ensup.master.metier.Course;
 public interface ICourseDao {
 
 	public void associateCourse(Course course,int id);
+
+	public List<Course> getAllCourses();
 }

@@ -4,5 +4,34 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
-	
+	<servlet>
+		<servlet-name>ConnexionServlet</servlet-name>
+		<display-name>ConnexionServlet</display-name>
+		<description>servlet d'authentification</description>
+		<servlet-class>servlets.ConnexionServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AjoutEtudiantServlet</servlet-name>
+		<display-name>AjoutEtudiantServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.AjoutEtudiantServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>EtudiantServlet</servlet-name>
+		<display-name>EtudiantServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.EtudiantServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ConnexionServlet</servlet-name>
+		<url-pattern>/ConnexionServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AjoutEtudiantServlet</servlet-name>
+		<url-pattern>/AjoutEtudiantServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EtudiantServlet</servlet-name>
+		<url-pattern>/EtudiantServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
