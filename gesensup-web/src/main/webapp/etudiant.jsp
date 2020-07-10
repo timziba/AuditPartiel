@@ -24,15 +24,15 @@
 			<!--Table head-->
 			<thead>
 				<tr>
-					
-					<th>Id</th>
+
+					<th id="ID" name="ID">Id</th>
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Mail Address</th>
 					<th>Address</th>
-					<th>Phone Number</th>
-					<th>BirthDay</th>
-					<th>Action</th>
+					<th style="width: 70px;">Phone Number</th>
+					<th style="width: 70px;">BirthDay</th>
+					<th style="width: 150px;">Action</th>
 				</tr>
 			</thead>
 			<!--Table head-->
@@ -48,9 +48,7 @@
 				<%
 					for (Student student : listEtudiant) {
 				%>
-				<%
-					
-				%>
+			
 				<tr>
 					<td><%=student.getId()%></td>
 					<td><%=student.getFirstName()%></td>
@@ -60,17 +58,17 @@
 					<td><%=student.getNumberPhone()%></td>
 					<td><%=student.getDateOfBirth()%></td>
 					<td>
-						
+
 						<ul>
-							<li><a href="etudiantAjout.jsp">Edit</a></li>
+							<li>
+							<a href="etudiantAjout.jsp" value="<%=student.getId()%>" onclick="edit();">Edit</a>
+							
+								
+							<a href="etudiant.jsp/?"ID = <%=%>" style="color: red">Delete</a>
+
+							<a href="etudiantView.jsp" style="color: blue" value="<%=student.getId()%>" onclick="view();">View</a></li>
 						</ul>
-						<ul>
-							<li><a href="etudiantAjout.jsp" style="color: red">Delete</a></li>
-						</ul>
-						<ul>
-							<li><a href="etudiantAjout.jsp" style="color: blue">View</a></li>
-						</ul>
-						
+
 					</td>
 				</tr>
 				<%
@@ -92,4 +90,7 @@
 
 
 <!-- footer -->
+<script>
+
+</script>
 <%@include file="footer.jsp"%>

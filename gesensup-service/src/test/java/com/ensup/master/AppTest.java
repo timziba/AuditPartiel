@@ -29,7 +29,7 @@ public class AppTest {
 
 		ArrayList<Student> list = new ArrayList<Student>();
 		list.add(new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date()));
+				"01 02 03 04 05", "1999-20-15"));
 
 		Mockito.when(dao.readAllStudent()).thenReturn(list);
 
@@ -44,7 +44,7 @@ public class AppTest {
 	public void studentCreationCheck() {
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date());
+				"01 02 03 04 05", "1999-20-15");
 
 		Mockito.doNothing().when(dao).createStudent(Mockito.isA(Student.class));
 		service.createStudent(student);
@@ -55,7 +55,7 @@ public class AppTest {
 	@Test
 	public void studentUpdateCheck() {
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date());
+				"01 02 03 04 05", "1999-20-15");
 
 		Mockito.doNothing().when(dao).updateStudent(Mockito.isA(Student.class));
 		service.updateStudent(student);
@@ -67,7 +67,7 @@ public class AppTest {
 	public void studentDeleteCheck() {
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date());
+				"01 02 03 04 05", "1999-20-15");
 
 		Mockito.doNothing().when(dao).deleteStudent(Mockito.isA(Integer.class));
 		service.deleteStudent(1);
@@ -79,7 +79,7 @@ public class AppTest {
 	public void studentSelectCheck() {
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date());
+				"01 02 03 04 05", "1999-20-15");
 
 		Mockito.when(dao.getStudent(1)).thenReturn(student);
 
@@ -96,7 +96,7 @@ public class AppTest {
 		CourseService courseService = new CourseService(courseDao);
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date());
+				"01 02 03 04 05", "1999-20-15");
 		Course course = new Course("JAVA", 40);
 
 		Mockito.doNothing().when(courseDao).associateCourse(Mockito.isA(Course.class), Mockito.isA(Integer.class));
@@ -109,7 +109,7 @@ public class AppTest {
 	public void getUserCheck() {
 
 		Student student = new Student(1, "OZDOK", "Bertrand", "ozdok@yahoo.fr", "Saint cyr 10 rue des fermiers",
-				"01 02 03 04 05", new Date());
+				"01 02 03 04 05", "1999-20-15");
 
 		Mockito.when(dao.getUser("ozdok@yahoo.fr")).thenReturn(student);
 
