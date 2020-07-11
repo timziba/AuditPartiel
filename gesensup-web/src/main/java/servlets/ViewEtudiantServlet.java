@@ -13,15 +13,13 @@ import javax.servlet.http.HttpSession;
 
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
-import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.StudentService;
-import com.ensup.master.serviceImpl.UserService;
 
 /**
- * Servlet implementation class SupprimerEtudiantServlet
+ * Servlet implementation class ViewEtudiant
  */
-public class SupprimerEtudiantServlet extends HttpServlet {
+public class ViewEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentService studentService;
 	private CourseService courseService;
@@ -30,7 +28,7 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 	/**
 	 * Default constructor.
 	 */
-	public SupprimerEtudiantServlet() {
+	public ViewEtudiantServlet() {
 		studentService = new StudentService();
 	}
 
@@ -66,38 +64,36 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 		String object = request.getParameter("id");
 		int id = Integer.valueOf(object);
 				
-		studentService.deleteStudent(id);
+		Student student = studentService.getStudent(id);
 
-		dispatcher = request.getRequestDispatcher("etudiant.jsp");
+		dispatcher = request.getRequestDispatcher("etudiantView.jsp");
+		session.setAttribute("student", student);
+//		session.setAttribute("students", lister());
+//		session.setAttribute("courses", getAllCourses());
 
-		session.setAttribute("students", lister());
-		session.setAttribute("courses", getAllCourses());
-		session.setAttribute("student", null);
-		session.setAttribute("message", "Suppression effectuée avec succès !!! ");
 		dispatcher.forward(request, response);
 	}
 
-	private List<Student> lister() {
-
-		List<Student> students = Collections.emptyList();
-		try {
-			students = studentService.readAllStudent();
-		} catch (Exception e) {
-
-		}
-		return students;
-	}
-
-	private List<Course> getAllCourses() {
-
-		List<Course> courses = Collections.emptyList();
-		try {
-
-			courses = courseService.getAllCourses();
-		} catch (Exception e) {
-
-		}
-		return courses;
-	}
-
+//	private List<Student> lister() {
+//
+//		List<Student> students = Collections.emptyList();
+//		try {
+//			students = studentService.readAllStudent();
+//		} catch (Exception e) {
+//
+//		}
+//		return students;
+//	}
+//
+//	private List<Course> getAllCourses() {
+//
+//		List<Course> courses = Collections.emptyList();
+//		try {
+//
+//			courses = courseService.getAllCourses();
+//		} catch (Exception e) {
+//
+//		}
+//		return courses;
+//	}
 }

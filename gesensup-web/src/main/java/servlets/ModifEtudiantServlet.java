@@ -13,25 +13,23 @@ import javax.servlet.http.HttpSession;
 
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
-import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.StudentService;
-import com.ensup.master.serviceImpl.UserService;
 
 /**
- * Servlet implementation class SupprimerEtudiantServlet
+ * Servlet implementation class ModifEtudiantServlet
  */
-public class SupprimerEtudiantServlet extends HttpServlet {
+public class ModifEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private StudentService studentService;
-	private CourseService courseService;
 	private RequestDispatcher dispatcher = null;
-
+	private CourseService courseService;
 	/**
-	 * Default constructor.
+	 * @see HttpServlet#HttpServlet()
 	 */
-	public SupprimerEtudiantServlet() {
+	public ModifEtudiantServlet() {
 		studentService = new StudentService();
+		courseService = new CourseService();
 	}
 
 	/**
@@ -40,7 +38,7 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		methode(request, response);
+		dispatcher = request.getRequestDispatcher("etudiantAjout.jsp");
 	}
 
 	/**
@@ -49,31 +47,26 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-	}
 
-	/**
-	 * 
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
-	 */
-	public void methode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Student student = new Student(
+				Integer.valueOf(request.getParameter("id")), 
+				request.getParameter("firstName"), 
+				request.getParameter("lastName"),
+				request.getParameter("mailAdresse"), 
+				request.getParameter("adress"),
+				request.getParameter("numberPhone"), 
+				request.getParameter("dateOfBirth"));
 
 		HttpSession session = request.getSession();
-		String object = request.getParameter("id");
-		int id = Integer.valueOf(object);
-				
-		studentService.deleteStudent(id);
+		session.setAttribute("student", null);
 
-		dispatcher = request.getRequestDispatcher("etudiant.jsp");
+		studentService.updateStudent(student);
 
+		session.setAttribute("student", null);
 		session.setAttribute("students", lister());
 		session.setAttribute("courses", getAllCourses());
-		session.setAttribute("student", null);
-		session.setAttribute("message", "Suppression effectuée avec succès !!! ");
+		
+		dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -99,5 +92,4 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 		}
 		return courses;
 	}
-
 }

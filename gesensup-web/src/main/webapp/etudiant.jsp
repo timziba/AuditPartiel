@@ -26,13 +26,13 @@
 				<tr>
 
 					<th id="ID" name="ID">Id</th>
-					<th>First Name</th>
+					<th style="width: 150px;">First Name</th>
 					<th>Last Name</th>
 					<th>Mail Address</th>
 					<th>Address</th>
 					<th style="width: 70px;">Phone Number</th>
 					<th style="width: 70px;">BirthDay</th>
-					<th style="width: 150px;">Action</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 			<!--Table head-->
@@ -61,12 +61,13 @@
 
 						<ul>
 							<li>
-							<a href="etudiantAjout.jsp" value="<%=student.getId()%>" onclick="edit();">Edit</a>
-							
+								<a href="EditerEtudiantServlet?id=<%=student.getId()%>">Edit</a>				
 								
-							<a href="etudiant.jsp/?"ID = <%=%>" style="color: red">Delete</a>
-
-							<a href="etudiantView.jsp" style="color: blue" value="<%=student.getId()%>" onclick="view();">View</a></li>
+								<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>">Delete</a>
+								
+								<a href="ViewEtudiantServlet?id=<%=student.getId()%>">View</a>
+							
+							</li>
 						</ul>
 
 					</td>
