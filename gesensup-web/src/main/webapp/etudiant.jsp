@@ -61,11 +61,13 @@
 
 						<ul>
 							<li>
-								<a href="EditerEtudiantServlet?id=<%=student.getId()%>">Edit</a>				
+								<a href="EditerEtudiantServlet?id=<%=student.getId()%>" >Edit</a>				
 								
-								<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>">Delete</a>
+								<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>" style="color:red">Delete</a>
 								
-								<a href="ViewEtudiantServlet?id=<%=student.getId()%>">View</a>
+								<a href="ViewEtudiantServlet?id=<%=student.getId()%>" style="color:blue">View</a>
+								
+								<a href="ViewEtudiantServlet?id=<%=student.getId()%>" style="color:blue">Cours</a>
 							
 							</li>
 						</ul>

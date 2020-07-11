@@ -28,14 +28,14 @@
 				
 					<div class="col">
 						<div class="md-form md-outline mt-0">
-							<input type="text" id="firstName" name="firstName" class="form-control" value=<%=student.getFirstName()%>> 
+							<input type="text" id="firstName" name="firstName" class="form-control" value="<%=student.getFirstName()%>"> 
 							<label for="firstName">First Name</label>
 						</div>
 					</div>
 					
 					<div class="col">
 						<div class="md-form md-outline mt-0">
-							<input type="text" id="lastName" name="lastName" class="form-control" value=<%=student.getLastName()%>> 
+							<input type="text" id="lastName" name="lastName" class="form-control" value="<%=student.getLastName()%>"> 
 							<label for="lastName">Last Name</label>
 						</div>
 					</div>
@@ -43,27 +43,27 @@
 				</div>
 
 				<div class="md-form md-outline mt-0">
-					<input type="text" id="mailAdresse" class="form-control" name="mailAdresse" value=<%=student.getMailAdresse()%>> 
+					<input type="text" id="mailAdresse" class="form-control" name="mailAdresse" value="<%=student.getMailAdresse()%>"> 
 					<label for="mailAdresse">Mail Adress</label>
 				</div>
 				
 				
 				<div class="md-form md-outline">
-					<input  id="adress" class="form-control" name="adress" value=<%=student.getAdress()%> >
+					<input  id="adress" class="form-control" name="adress" value="<%=student.getAdress()%>" >
 					<label for="adress">Address</label>
 				</div>
 				
-				<div class="md-form md-outline mt-0"  type ="hidden;">
-					<input type="text" id="numberPhone" name="numberPhone" class="form-control" value=<%=student.getNumberPhone()%>>
+				<div class="md-form md-outline mt-0">
+					<input type="text" id="numberPhone" name="numberPhone" class="form-control" value="<%=student.getNumberPhone()%>">
 					<label for="numberPhone">NumberPhone</label>
 				</div>				
 				
 				<div class="md-form md-outline mt-0">
-					<input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" value=<%=student.getDateOfBirth()%>>
+					<input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control" value="<%=student.getDateOfBirth()%>">
 					<label for="dateOfBirth">Birth Date - format(yyyy-mm-dd)</label>
 				</div>
 				<div class="md-form md-outline mt-0"  style="visibility:hidden;">
-					<input type="text" id="id" name="id" class="form-control" value=<%=student.getId()%>>
+					<input type="text" id="id" name="id" class="form-control" value="<%=student.getId()%>">
 					<label for="id">id</label>
 				</div>	
 			
