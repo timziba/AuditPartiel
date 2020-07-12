@@ -3,7 +3,6 @@
         
         <!-- Masthead-->
 		<section class="page-section home" id="home">
-            	<% User user = (User) session.getAttribute("user");%>
             
 				<header class="masthead bg-primary text-white text-center">
 					<div class="container d-flex align-items-center flex-column">

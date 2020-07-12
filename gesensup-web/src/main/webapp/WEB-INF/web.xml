@@ -89,12 +89,11 @@
 		<url-pattern>/ModifEtudiantServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
-<<<<<<< HEAD
 		<servlet-name>RechercheEtudiantServlet</servlet-name>
 		<url-pattern>/RechercheEtudiantServlet</url-pattern>
-=======
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>EtudiantCoursServlet</servlet-name>
 		<url-pattern>/EtudiantCoursServlet</url-pattern>
->>>>>>> fatima
 	</servlet-mapping>
 </web-app>
