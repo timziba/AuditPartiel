@@ -53,6 +53,12 @@
 		<description></description>
 		<servlet-class>servlets.RechercheEtudiantServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>EtudiantCoursServlet</servlet-name>
+		<display-name>EtudiantCoursServlet</display-name>
+		<description></description>
+		<servlet-class>servlets.EtudiantCoursServlet</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>ConnexionServlet</servlet-name>
@@ -83,7 +89,12 @@
 		<url-pattern>/ModifEtudiantServlet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
+<<<<<<< HEAD
 		<servlet-name>RechercheEtudiantServlet</servlet-name>
 		<url-pattern>/RechercheEtudiantServlet</url-pattern>
+=======
+		<servlet-name>EtudiantCoursServlet</servlet-name>
+		<url-pattern>/EtudiantCoursServlet</url-pattern>
+>>>>>>> fatima
 	</servlet-mapping>
 </web-app>

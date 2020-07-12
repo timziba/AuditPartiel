@@ -95,14 +95,17 @@
 					<td>
 
 						<ul>
-							<li><a href="EditerEtudiantServlet?id=<%=student.getId()%>">Edit</a>
-
-								<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>"
-								style="color: red">Delete</a> <a
-								href="ViewEtudiantServlet?id=<%=student.getId()%>"
-								style="color: blue">View</a> <a
-								href="ViewEtudiantServlet?id=<%=student.getId()%>"
-								style="color: blue">Cours</a></li>
+							<li>
+								<a href="EditerEtudiantServlet?id=<%=student.getId()%>" >Edit</a>				
+								
+								<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>" style="color:red">Delete</a>
+								
+								<a href="ViewEtudiantServlet?id=<%=student.getId()%>" style="color:blue">View</a>
+								
+								<a href="EtudiantCoursServlet?id=<%=student.getId()%>" style="color:blue">Cours</a>
+								
+							
+							</li>
 						</ul>
 
 					</td>
