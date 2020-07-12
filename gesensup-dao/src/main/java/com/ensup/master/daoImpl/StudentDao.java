@@ -166,14 +166,22 @@ public class StudentDao {
 	public void deleteStudent(int id) {
 		Connection cn = null;
 		Statement st = null;
+		ResultSet rs = null, rs1 = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			cn = DriverManager.getConnection(url, sql_login, sql_password);
 			st = cn.createStatement();
-
-			String sql = "DELETE FROM person WHERE id = '" + id + "'";
-
-			st.executeUpdate(sql);
+			
+			String slq = "select * from studentcourse where idStudent = '"+id+"' ";
+			
+			rs = st.executeQuery(slq);
+			if (rs.next()) {
+				System.out.println("On ne peut pas supprimer");
+			} else {
+				String sql = "DELETE FROM person WHERE id = '" + id + "'";
+				st.executeUpdate(sql);
+			}
+			
 
 		} catch (SQLException e) {
 			e.printStackTrace();

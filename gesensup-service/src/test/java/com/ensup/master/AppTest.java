@@ -136,7 +136,7 @@ public class AppTest {
 		List<Student> students = service.getStudentByResearch("OBERLE", "François");
 
 		Assertions.assertEquals(students.get(0).getFirstName(), "OBERLE");
-		Mockito.verify(dao).readAllStudent();
+		Mockito.verify(dao).getStudentByResearch("OBERLE", "François");
 
 	}
 	
