@@ -97,9 +97,9 @@ public class AppTest {
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", "1999-20-15");
-		Course course = new Course("JAVA", 40);
+		String course ="JAVA";
 
-		Mockito.doNothing().when(courseDao).associateCourse(Mockito.isA(Course.class), Mockito.isA(Integer.class));
+		Mockito.doNothing().when(courseDao).associateCourse(course, Mockito.isA(Integer.class));
 		courseService.associateCourse(course, student.getId());
 
 		Mockito.verify(courseDao).associateCourse(course, student.getId());
