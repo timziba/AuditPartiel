@@ -72,9 +72,9 @@ public class AppTest {
 
 		Student student = new Student(1, "OBERLE", "François", "françois@yahoo.fr", "Saint cyr 10 rue des fermiers",
 				"01 02 03 04 05", "1999-20-15");
-
-		Mockito.doNothing().when(dao).deleteStudent(Mockito.isA(Integer.class));
-		service.deleteStudent(student.getId());
+		boolean verifDelete = service.deleteStudent(student.getId());
+		Mockito.when(dao.deleteStudent(student.getId())).thenReturn(verifDelete);
+		
 
 		Mockito.verify(dao).deleteStudent(student.getId());
 	}

@@ -163,7 +163,7 @@ public class StudentDao {
 	 * 
 	 * @param id
 	 */
-	public void deleteStudent(int id) {
+	public boolean deleteStudent(int id) {
 		Connection cn = null;
 		Statement st = null;
 		ResultSet rs = null, rs1 = null;
@@ -176,10 +176,14 @@ public class StudentDao {
 			
 			rs = st.executeQuery(slq);
 			if (rs.next()) {
-				System.out.println("On ne peut pas supprimer");
+				System.out.println("On ne peut pas supprimer car l'etudiant est inscrit a un cours");
+				return false;
 			} else {
 				String sql = "DELETE FROM person WHERE id = '" + id + "'";
 				st.executeUpdate(sql);
+				System.out.println("success suppresion");
+
+				return true;
 			}
 			
 
@@ -195,6 +199,7 @@ public class StudentDao {
 				e.printStackTrace();
 			}
 		}
+		return false;
 	}
 
 	/**

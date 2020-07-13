@@ -8,14 +8,39 @@
 <!-- Navigation-->
 <%@include file="menuhaut.jsp"%>
 
+<% String alert = (String) session.getAttribute("alert"); %>
+<% String message = (String) session.getAttribute("message"); %>
+
+
+<% if(alert =="success") { %>
+
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong><%= message %></strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <%} %>
+<% if(alert =="error") { %>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong><%= message %></strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <%} %>
+
 <div class="container">
 	<br /> <br /> <br /> <br /> <br /> <br />
 
 	<ul>
-		<li><a href="etudiantAjout.jsp">Ajout un étudiant</a></li>
+		<li><a href="etudiantAjout.jsp">Ajout un Ã©tudiant</a></li>
 	</ul>
 
-	
+	<form action="RechercheEtudiantServlet" method=get>
 
 		<div class="form-row">
 
@@ -39,6 +64,7 @@
 				<button type="submit" class="btn btn-primary mb-4">Research</button>
 			</div>
 		</div>
+	</form>	
 
 	<!-- Masthead Heading-->
 	<%
@@ -47,9 +73,9 @@
 		if (user.getProfil().equalsIgnoreCase("D")) {
 			listEtudiant = (List<Student>) session.getAttribute("students");
 		%>
-		<h1>Liste des étudiants</h1>
+		<h1>Liste des Ã©tudiants</h1>
 		<%} else {	%>
-		<h1>Informations sur un étudiant</h1>
+		<h1>Informations sur un Ã©tudiant</h1>
 		<%} %>
 	
 

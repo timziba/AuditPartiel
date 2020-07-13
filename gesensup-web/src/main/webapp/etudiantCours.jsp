@@ -8,6 +8,7 @@
 <%@include file="menuhaut.jsp"%>
 
 <div class="container">
+<br /> <br /> <br /> <br /> <br /> <br />
 	<%List<Course> listCours = (List<Course>) session.getAttribute("courses");%>
 	<h1>Associé un cour a un etudiant</h1>
 	<form action="EtudiantCoursServlet" method="post">

@@ -7,8 +7,20 @@
 <%@include file="header.jsp"%>
 <!-- Navigation-->
 <%@include file="menuhaut.jsp"%>
+<% String alert = (String) session.getAttribute("typeMessage"); %>
+<% String message = (String) session.getAttribute("message"); %>
 
-<!-- Début ajout etudiant -->
+<% if(alert=="error") { %>
+
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong><%= message %></strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <%} %>
+<!-- <--Début ajout etudiant -->
 
 <div class="container">
 	<br /> <br /> <br /> <br /> <br /> <br />
@@ -72,15 +84,11 @@
 				<br/> <br/>
 				<div class="text-center mb-2">
 					<button type="submit" class="btn btn-primary mb-4">Modifier</button>
-					<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>"><button  class="btn btn-primary mb-4">Delete</button></a>
 				</div>
-				
-				
-
+		
 			</form>
-
-
-
+				<a href="SupprimerEtudiantServlet?id=<%=student.getId()%>" style="position: absolute;top: 650px;left:550px"><button  class="btn btn-danger mb-4">Delete</button></a>
+				<a href="EtudiantCoursServlet?id=<%=student.getId()%>" style="position: absolute;top: 650px;left:680px"><button  class="btn btn-danger mb-4">Associé a un cours</button></a>
 		</div>
 </div>
 <!-- Fin ajout etudiant -->

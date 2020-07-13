@@ -58,7 +58,7 @@ public class RechercheEtudiantServlet extends HttpServlet {
 		if(user.getProfil().equalsIgnoreCase("R")) {
 			
 			dispatcher = request.getRequestDispatcher("updateDelete.jsp");
-			session.setAttribute("student", null);
+			session.setAttribute("student", students.get(0));
 		}
 		
 		else {

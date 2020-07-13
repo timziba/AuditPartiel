@@ -66,21 +66,46 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String object = request.getParameter("id");
 		int id = Integer.valueOf(object);
-				
-		studentService.deleteStudent(id);
-		user = (User) session.getAttribute("user");
-
-		if(user.getProfil().equalsIgnoreCase("R")) {
-			dispatcher = request.getRequestDispatcher("rechercheEtudiant.jsp");
-		}
-		dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		
+		Student student = studentService.getStudent(id);
+		System.out.println(student);
+				
+		boolean verifDelete = studentService.deleteStudent(id);
+
+		user = (User) session.getAttribute("user");
+		if(verifDelete == true) {
+			session.setAttribute("message", "Suppression effectuée avec succès !!! ");
+			session.setAttribute("alert", "success");
+			if(user.getProfil().equalsIgnoreCase("R")) {
+			
+				dispatcher = request.getRequestDispatcher("rechercheEtudiant.jsp");
+				
+			}
+			else {
+				dispatcher = request.getRequestDispatcher("etudiant.jsp");
+				
+			}
+	
+		}
+		else {
+			
+			session.setAttribute("message", "Suppression non  effectuée car l'etudiant est associé a un cours!!! ");
+			session.setAttribute("alert", "error");
+			if(user.getProfil().equalsIgnoreCase("R")) {
+				session.setAttribute("student", student);
+				dispatcher = request.getRequestDispatcher("updateDelete.jsp");
+				
+			}
+			else {
+				dispatcher = request.getRequestDispatcher("etudiant.jsp");
+				
+			}
+		}    
 		session.setAttribute("students", lister());
 		session.setAttribute("courses", getAllCourses());
-		session.setAttribute("student", null);
 		
 		
-		session.setAttribute("message", "Suppression effectuée avec succès !!! ");
+		
 		dispatcher.forward(request, response);
 	}
 

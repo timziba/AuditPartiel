@@ -15,7 +15,7 @@ public interface IStudentDao {
 	
 	public ArrayList<Student> readAllStudent();
 	
-	public void deleteStudent(int id);
+	public boolean deleteStudent(int id);
 	
 	public void  updateStudent(Student student);
 	

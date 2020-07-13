@@ -6,6 +6,21 @@
 <!-- Navigation-->
 <%@include file="menuhaut.jsp"%>
 
+<% String alert = (String) session.getAttribute("alert"); %>
+<% String message = (String) session.getAttribute("message"); %>
+	<br /> <br /> <br /> <br /> <br /> <br />
+
+
+          <% if(alert=="success") { %>
+
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong><%= message %></strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+
+          <%} %>
 <!-- Début ajout etudiant -->
 
 <div class="container">

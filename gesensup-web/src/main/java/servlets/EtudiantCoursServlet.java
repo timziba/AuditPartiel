@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
+import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.StudentService;
 
@@ -62,7 +63,15 @@ public class EtudiantCoursServlet extends HttpServlet {
 		System.out.println(course + " " +student.getId());
 		
 		courseService.associateCourse(course, student.getId());	
-		dispatcher = request.getRequestDispatcher("etudiant.jsp");
+		
+		User user = (User)session.getAttribute("user");
+		if(user.getProfil().equalsIgnoreCase("R")) {
+			
+			dispatcher = request.getRequestDispatcher("rechercheEtudiant.jsp");
+		}
+		else {
+			dispatcher = request.getRequestDispatcher("etudiant.jsp");
+		}
 		dispatcher.forward(request, response);
 	}
 	

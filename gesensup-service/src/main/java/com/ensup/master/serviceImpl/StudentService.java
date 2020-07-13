@@ -51,8 +51,8 @@ public class StudentService {
 	 * delete a student information
 	 * @param i
 	 */
-	public void deleteStudent(int id) {
-		dao.deleteStudent(id);		
+	public boolean deleteStudent(int id) {
+		return dao.deleteStudent(id);		
 	}
 
 	/**
