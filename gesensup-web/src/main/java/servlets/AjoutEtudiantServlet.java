@@ -68,7 +68,7 @@ public class AjoutEtudiantServlet extends HttpServlet {
 		studentService.createStudent(student);
 		session.setAttribute("students", lister(student));
 		session.setAttribute("courses", getAllCourses());
-		if(user.getProfil().equalsIgnoreCase("directeur")) {
+		if(user.getProfil().equalsIgnoreCase("D")) {
 			dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		}
 		else {

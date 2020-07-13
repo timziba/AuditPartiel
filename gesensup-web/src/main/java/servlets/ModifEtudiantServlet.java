@@ -69,7 +69,14 @@ public class ModifEtudiantServlet extends HttpServlet {
 		session.setAttribute("students", lister(student));
 		session.setAttribute("courses", getAllCourses());
 		
+		if(user.getProfil().equalsIgnoreCase("R")) {
+			
+			dispatcher = request.getRequestDispatcher("rechercheEtudiant.jsp");
+
+		}
+		else {
 		dispatcher = request.getRequestDispatcher("etudiant.jsp");
+		}
 		dispatcher.forward(request, response);
 	}
 

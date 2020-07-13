@@ -21,6 +21,8 @@ public class RechercheEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private User user = null;
 	private StudentService studentService;
+	private RequestDispatcher dispatcher = null;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -38,6 +40,7 @@ public class RechercheEtudiantServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
@@ -48,14 +51,26 @@ public class RechercheEtudiantServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("student", null);
 		user = (User) session.getAttribute("user");
 		List<Student> students = studentService.getStudentByResearch(request.getParameter("firstNameR"), request.getParameter("lastNameR"));
+		System.out.println(students.get(0).getFirstName());
+		System.out.println(students.get(0));
+		if(user.getProfil().equalsIgnoreCase("R")) {
+			
+			dispatcher = request.getRequestDispatcher("updateDelete.jsp");
+			session.setAttribute("student", null);
+		}
+		
+		else {
+			dispatcher = request.getRequestDispatcher("etudiant.jsp");
+			session.setAttribute("students", students);
 
-		session.setAttribute("students", students);
-		RequestDispatcher dispatcher = null;
-		dispatcher = request.getRequestDispatcher("etudiant.jsp");
+
+		}
+		
+		
 		dispatcher.forward(request, response);
 	}
-
+	
+	
 }

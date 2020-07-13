@@ -216,7 +216,7 @@ public class StudentDao {
 			String sql = "UPDATE person set firstName ='" + student.getFirstName() + "', lastName= '"
 					+ student.getLastName() + "', mailAdresse='" + student.getMailAdresse() + "'," + "	adress= '"
 					+ student.getAdress() + "',numberPhone = '" + student.getNumberPhone() + "',dateOfBirth='"
-					+ student.getLastName() + "' where id='" + student.getId() + "'";
+					+ student.getDateOfBirth() + "' where id='" + student.getId() + "'";
 			resultat = st.executeUpdate(sql);
 			if (resultat == 0) {
 				System.out.println("Aucune modification n'a était faite");

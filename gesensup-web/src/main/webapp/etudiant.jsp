@@ -15,7 +15,7 @@
 		<li><a href="etudiantAjout.jsp">Ajout un étudiant</a></li>
 	</ul>
 
-	<form action="RechercheEtudiantServlet" method="post">
+	
 
 		<div class="form-row">
 
@@ -39,7 +39,6 @@
 				<button type="submit" class="btn btn-primary mb-4">Research</button>
 			</div>
 		</div>
-	</form>
 
 	<!-- Masthead Heading-->
 	<%

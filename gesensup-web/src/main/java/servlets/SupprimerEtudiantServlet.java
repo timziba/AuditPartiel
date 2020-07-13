@@ -68,10 +68,13 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 		int id = Integer.valueOf(object);
 				
 		studentService.deleteStudent(id);
+		user = (User) session.getAttribute("user");
 
+		if(user.getProfil().equalsIgnoreCase("R")) {
+			dispatcher = request.getRequestDispatcher("rechercheEtudiant.jsp");
+		}
 		dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		
-		user = (User) session.getAttribute("user");
 		session.setAttribute("students", lister());
 		session.setAttribute("courses", getAllCourses());
 		session.setAttribute("student", null);

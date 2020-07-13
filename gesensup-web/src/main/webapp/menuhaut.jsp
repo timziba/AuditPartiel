@@ -12,20 +12,21 @@
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
-				<% if(user.getProfil().equalsIgnoreCase("responsable")) { %>
+				<% if(user.getProfil().equalsIgnoreCase("R")) { %>
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="home.jsp">Home</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="cours.jsp">Cours</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="etudiantAjout.jsp">Ajouter un étudiant</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="rechercheEtudiant.jsp">Rechercher un étudiant</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.jsp">Déconnexion</a></li>
                     </ul>
                 </div>
                 <% 
 				}
                 %>
-                <% if(user.getProfil().equalsIgnoreCase("directeur")) { %>
+                <% if(user.getProfil().equalsIgnoreCase("D")) { %>
 
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
