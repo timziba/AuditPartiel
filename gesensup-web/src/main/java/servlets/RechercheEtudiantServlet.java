@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ensup.master.daoImpl.IStudentDao2;
+import com.ensup.master.daoImpl.StudentDao2;
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.IStudentService;
@@ -21,6 +23,7 @@ import com.ensup.master.serviceImpl.StudentService;
 public class RechercheEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private User user = null;
+	private IStudentDao2 studentdao = new StudentDao2();
 	private IStudentService studentService;
 	private RequestDispatcher dispatcher = null;
 
@@ -29,7 +32,7 @@ public class RechercheEtudiantServlet extends HttpServlet {
 	 */
 	public RechercheEtudiantServlet() {
 		super();
-		studentService = new StudentService();
+		studentService = new StudentService(studentdao);
 	}
 
 	/**

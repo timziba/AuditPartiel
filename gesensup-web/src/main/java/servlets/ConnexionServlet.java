@@ -12,11 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ensup.master.daoImpl.IStudentDao2;
+import com.ensup.master.daoImpl.IUserDao2;
+import com.ensup.master.daoImpl.StudentDao2;
+import com.ensup.master.daoImpl.UserDao2;
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.CourseService;
 import com.ensup.master.serviceImpl.IStudentService;
+import com.ensup.master.serviceImpl.IUserService;
 import com.ensup.master.serviceImpl.StudentService;
 import com.ensup.master.serviceImpl.UserService;
 
@@ -27,7 +32,10 @@ import com.ensup.master.serviceImpl.UserService;
 public class ConnexionServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private UserService userService;
+	private IUserDao2 userDao = new UserDao2();
+	private IStudentDao2 studentdao = new StudentDao2();
+			
+	private IUserService userService;
 	private IStudentService studentService;
 	private CourseService courseService;
 	private RequestDispatcher dispatcher = null;
@@ -36,9 +44,9 @@ public class ConnexionServlet extends HttpServlet {
 	 * Default constructor.
 	 */
 	public ConnexionServlet() {
-		userService = new UserService();
+		userService = new UserService(userDao);
 		courseService = new CourseService();
-		studentService = new StudentService();
+		studentService = new StudentService(studentdao);
 	}
 
 	/**

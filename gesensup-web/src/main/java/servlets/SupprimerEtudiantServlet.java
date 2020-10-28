@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ensup.master.daoImpl.IStudentDao2;
+import com.ensup.master.daoImpl.StudentDao2;
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
@@ -24,6 +26,7 @@ import com.ensup.master.serviceImpl.UserService;
  */
 public class SupprimerEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IStudentDao2 studentdao = new StudentDao2();
 	private IStudentService studentService;
 	private CourseService courseService;
 	private RequestDispatcher dispatcher = null;
@@ -33,7 +36,7 @@ public class SupprimerEtudiantServlet extends HttpServlet {
 	 * Default constructor.
 	 */
 	public SupprimerEtudiantServlet() {
-		studentService = new StudentService();
+		studentService = new StudentService(studentdao);
 	}
 
 	/**

@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ensup.master.daoImpl.IStudentDao2;
+import com.ensup.master.daoImpl.StudentDao2;
 import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
@@ -31,6 +33,7 @@ import com.ensup.master.serviceImpl.StudentService;
 //@WebServlet("/AjoutEtudiant")
 public class AjoutEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private IStudentDao2 studentdao = new StudentDao2();
 	private IStudentService studentService;
 	private RequestDispatcher dispatcher = null;
 	private CourseService courseService;
@@ -39,7 +42,7 @@ public class AjoutEtudiantServlet extends HttpServlet {
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AjoutEtudiantServlet() {
-		studentService = new StudentService();
+		studentService = new StudentService(studentdao);
 		courseService = new CourseService();
 	}
 

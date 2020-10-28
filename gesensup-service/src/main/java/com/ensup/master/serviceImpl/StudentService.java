@@ -19,9 +19,9 @@ public class StudentService implements IStudentService {
 	/*
 	 * IStudentDao idao; StudentDao dao;
 	 */
-	private StudentDao2 dao;
+	private IStudentDao2 dao;
 	
-	public StudentService() {
+	public StudentService(IStudentDao2 dao) {
 		this.dao = new StudentDao2();
 	}
 	
