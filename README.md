@@ -1,37 +1,47 @@
-# AuditPartiel
-# ** PROJET DE GESTION ECOLE CAS : ENSUP **
+# PROJET DE GESTION ECOLE CAS : ENSUP 
 
-PREREQUIS: 
+## PREREQUIS: 
 
-1 / Télécharger eclipse
+Installer [tomcat](https://tomcat.apache.org/tomcat-8.5-doc/setup.html)
 
-2 / Télécharger  Wamp pour utiliser le serveur de base de données : PhpMyAdmin
+Installer [mysql](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 
-INSTALLATION :
+## POCEDURES:
 
-1 / Installer l'editeur eclipe
+### ETAPE 1 : 
+  Clonez le projet a partir du repository ```git clone https://github.com/timziba/AuditPartiel.git```
 
-2 / Installer Wamp
+### ETAPE 2 : 
+  Créer la base de donnée : ```create database demojpa;```
 
+  Executer le fichier .sql situé dans la répertoire BDD du repository.
 
-POCEDURES:
-ETAPE 1 : Lancer le moteur de base de données et excétuer la commande ci-dessous pour creer la base de données
+  Ouvrir le fichier de configuration AuditPartiel/gesensup-dao/src/main/resources/META-INF/persistencce.xml
 
-  > create database nombasededonnée;
+  Changer les parametres de connection de la base de données selon votre configuration.
+
+  Paramètres par défaut
+    
+  > url : localhost:3306/demojpa
+  >
+  > login : root
+  >
+  > password :
+
+### ETAPE 3 :
+  Ouvrir une ligne de commande depuis la racine du repository local
   
-ETAPE 2 : Télécharger le projet a partir du repository
+  Exécuter la commande ```mvn clean package```
+  
+  Récupérer et déployer dans tomcat le fichier "AuditPartiel/gesensup-web/target/gesensup-web.war"
+  
+### ETAPE 4 : 
+  Accéder à "localhost:8080/gesensup-web/"
+  
+  Connecter vous à l'application avec 
+  
+  > login : admin 
+  > 
+  > password : admin
 
-ETAPE 3 : Lancer l'editeur Eclipse et Importer le projet 
-
-ETAPE 4 : Ouvrir le fichier de configuration  persistencce.xml dans le package ressources/META-INF
-          
-          Changer les parametres de connection de la base de données selon votre configuration :
-           url : localhost:numeroport/nombasededonnée 
-           login : root
-           password : mettre mot de passe s'il y a en sinon laissé vide  
-           
-ETAPE 5 : Ouvrir une ligne de commande , aller a la racine du projet et taper la commande :
-          mvn clean package
-          Ouvrir la dossier target a la racine du projet et lancer le fichier .jar
-Lancer le programme et c'est tout 
 
