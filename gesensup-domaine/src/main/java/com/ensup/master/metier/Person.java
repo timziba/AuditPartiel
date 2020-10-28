@@ -32,8 +32,6 @@ public class Person {
 	private String numberPhone;
 	
 	
-	
-	
 	public Person() {
 		super();
 	}
