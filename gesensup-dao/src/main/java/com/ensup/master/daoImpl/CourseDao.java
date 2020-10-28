@@ -22,9 +22,9 @@ public class CourseDao {
 	/**
 	 * associate course 
 	 * @param course
-	 * @param id
+	 * @param long1
 	 */
-	public void associateCourse(String course,int id) {
+	public void associateCourse(String course,Long long1) {
 		
 		Connection cn = null;
 		Statement st = null;
@@ -34,7 +34,7 @@ public class CourseDao {
 			
 			st = cn.createStatement();
 			
-			String sql = "INSERT INTO studentcourse (idStudent, themeCourse) VALUES ('"+ id +"', '"+course +"')";
+			String sql = "INSERT INTO studentcourse (idStudent, themeCourse) VALUES ('"+ long1 +"', '"+course +"')";
 		
 			st.executeUpdate(sql);
 			System.out.println("Cours associé");

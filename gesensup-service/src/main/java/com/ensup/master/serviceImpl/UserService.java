@@ -1,7 +1,10 @@
 package com.ensup.master.serviceImpl;
 
 import com.ensup.master.dao.IUserDao;
+import com.ensup.master.daoImpl.IUserDao2;
+import com.ensup.master.daoImpl.StudentDao2;
 import com.ensup.master.daoImpl.UserDao;
+import com.ensup.master.daoImpl.UserDao2;
 import com.ensup.master.metier.User;
 
 /**
@@ -12,17 +15,18 @@ import com.ensup.master.metier.User;
  */
 public class UserService {
 
-	IUserDao idao;
-	UserDao dao;
-	
-	public UserService(UserDao dao) {
-		this.dao = dao;
-	}
 
+	//IUserDao idao;
+	private UserDao2 dao;
+	
 	public UserService() {
-		super();
-		dao = new UserDao();
-	}
+		
+		this.dao = new UserDao2();
+		}
+			
+			
+
+	
 
 	/**
 	 * get an user

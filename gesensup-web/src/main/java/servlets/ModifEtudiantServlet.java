@@ -15,6 +15,7 @@ import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.CourseService;
+import com.ensup.master.serviceImpl.IStudentService;
 import com.ensup.master.serviceImpl.StudentService;
 
 /**
@@ -22,7 +23,7 @@ import com.ensup.master.serviceImpl.StudentService;
  */
 public class ModifEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private StudentService studentService;
+	private IStudentService studentService;
 	private RequestDispatcher dispatcher = null;
 	private CourseService courseService;
 	private User user = null;
@@ -51,7 +52,6 @@ public class ModifEtudiantServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Student student = new Student(
-				Integer.valueOf(request.getParameter("id")), 
 				request.getParameter("firstName"), 
 				request.getParameter("lastName"),
 				request.getParameter("mailAdresse"), 

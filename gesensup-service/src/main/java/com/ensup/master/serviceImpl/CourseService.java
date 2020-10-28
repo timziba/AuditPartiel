@@ -29,10 +29,10 @@ public class CourseService {
 	/**
 	 * associate course 
 	 * @param course
-	 * @param id
+	 * @param long1
 	 */
-	public void associateCourse(String course, int id) {
-		dao.associateCourse(course, id);
+	public void associateCourse(String course, Long long1) {
+		dao.associateCourse(course, long1);
 	}
 
 	public List<Course> getAllCourses() {		

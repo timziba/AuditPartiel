@@ -3,7 +3,9 @@ package com.ensup.master.serviceImpl;
 import java.util.List;
 
 import com.ensup.master.dao.IStudentDao;
+import com.ensup.master.daoImpl.IStudentDao2;
 import com.ensup.master.daoImpl.StudentDao;
+import com.ensup.master.daoImpl.StudentDao2;
 import com.ensup.master.metier.Student;
 
 /**
@@ -12,20 +14,20 @@ import com.ensup.master.metier.Student;
  * @author DANON
  *
  */
-public class StudentService {
+public class StudentService implements IStudentService {
 
-	IStudentDao idao;
-	StudentDao dao;
-	
-	public StudentService(StudentDao dao) {
-		this.dao = dao;
-	}
+	/*
+	 * IStudentDao idao; StudentDao dao;
+	 */
+	private StudentDao2 dao;
 	
 	public StudentService() {
-		super();
-		dao = new StudentDao();
+		this.dao = new StudentDao2();
 	}
+	
 
+
+	@Override
 	public void createStudent(Student student) {
 		dao.createStudent(student);
 	}
@@ -35,6 +37,7 @@ public class StudentService {
 	 * @return List<Student>
 	 */
 	 
+	@Override
 	public List<Student> readAllStudent() {
 		return dao.readAllStudent();
 	}
@@ -43,6 +46,7 @@ public class StudentService {
 	 * Upadate a student information
 	 * @param student
 	 */
+	@Override
 	public void updateStudent(Student student) {
 		dao.updateStudent(student);
 	}
@@ -51,8 +55,9 @@ public class StudentService {
 	 * delete a student information
 	 * @param i
 	 */
+	@Override
 	public boolean deleteStudent(int id) {
-		return dao.deleteStudent(id);		
+		 return dao.deleteStudent(id);		
 	}
 
 	/**
@@ -60,6 +65,7 @@ public class StudentService {
 	 * @param student
 	 * @return
 	 */
+	@Override
 	public Student getStudent(int i) {
 		// TODO Auto-generated method stub
 		return dao.getStudent(i);
@@ -70,6 +76,7 @@ public class StudentService {
 	 * @param email
 	 * @return
 	 */
+	@Override
 	public Student getStudentByEmail(String email) {
 		return dao.getStudentByEmail(email);
 	}
@@ -80,6 +87,7 @@ public class StudentService {
 	 * @param lastName
 	 * @return
 	 */
+	@Override
 	public List<Student> getStudentByResearch(String firstName, String lastName){
 		return dao.getStudentByResearch(firstName, lastName);
 	}

@@ -1,31 +1,56 @@
 package com.ensup.master.metier;
 
-public class User {
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
-	private int id;
+@Entity
+@DiscriminatorValue("user")
+@NamedQueries({
+	@NamedQuery(name = "getUser", query = "select u from User u where u.login= :login and u.password= :password")
+})
+public class User  extends Person{
+
+	
 	private String login;
 	private String password;
 	private String profil;
 	
-	public User(String login, String password) {
-		this.login = login;
-		this.password = password;
-	}
-	public User(int id, String login, String password, String profil) {
-		super();
-		this.id = id;
+	public User(String firstName, String lastName, String mailAdresse, String adress, String numberPhone, String login,
+			String password, String profil) {
+		super(firstName, lastName, mailAdresse, adress, numberPhone);
 		this.login = login;
 		this.password = password;
 		this.profil = profil;
 	}
 
-	public int getId() {
-		return id;
+	
+	
+	public User() {
+		super();
 	}
 
-	public void setId(int id) {
-		this.id = id;
+
+
+	public User(Long id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
+			String login, String password, String profil) {
+		super(id, firstName, lastName, mailAdresse, adress, numberPhone);
+		this.login = login;
+		this.password = password;
+		this.profil = profil;
 	}
+
+	public User(String login, String password, String profil) {
+		super();
+		this.login = login;
+		this.password = password;
+		this.profil = profil;
+	}
+
+
 
 	public String getLogin() {
 		return login;
@@ -51,9 +76,6 @@ public class User {
 		this.profil = profil;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", login=" + login + ", password=" + password + ", profil=" + profil + "]";
-	}	
+	
 	
 }

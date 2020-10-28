@@ -16,6 +16,7 @@ import com.ensup.master.metier.Course;
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
 import com.ensup.master.serviceImpl.CourseService;
+import com.ensup.master.serviceImpl.IStudentService;
 import com.ensup.master.serviceImpl.StudentService;
 import com.ensup.master.serviceImpl.UserService;
 
@@ -26,7 +27,7 @@ import com.ensup.master.serviceImpl.UserService;
 public class EtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private StudentService studentService;
+	private IStudentService studentService;
 	private CourseService courseService;
 	private RequestDispatcher dispatcher = null;
 	private User user = null;

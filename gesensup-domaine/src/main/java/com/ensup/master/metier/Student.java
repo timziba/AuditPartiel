@@ -1,6 +1,11 @@
 package com.ensup.master.metier;
 
 import java.util.Date;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  * Class Student
@@ -8,17 +13,47 @@ import java.util.Date;
  * @author Student
  *
  */
+
+@Entity
+@DiscriminatorValue("student")
+@NamedQueries({
+	@NamedQuery(name = "getAllStudent", query = "select s from Student s "),
+	@NamedQuery(name = "getStudentByResearch", query = "select st from Student st where st.firstName= :firstName and st.lastName= :lastName"),
+	@NamedQuery(name = "getStudentByEmail", query = "select st from Student st where st.mailAdresse= :mailAdresse")
+	
+
+})
+
+
 public class Student extends Person {
 
 	private String dateOfBirth;
+	
+	@ManyToOne()
+	private Course course;
+	
+	public Student() {
+		super();
+	}
 
-	public Student(Integer id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
+
+
+	public Student(String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
+			String dateOfBirth) {
+		super(firstName, lastName, mailAdresse, adress, numberPhone);
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	
+
+	public Student(Long id, String firstName, String lastName, String mailAdresse, String adress, String numberPhone,
 			String dateOfBirth) {
 		super(id, firstName, lastName, mailAdresse, adress, numberPhone);
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	
+
+
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
@@ -26,6 +61,16 @@ public class Student extends Person {
 
 	public void setDateOfBirth(String dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+
+	public Course getCourse() {
+		return course;
+	}
+
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 

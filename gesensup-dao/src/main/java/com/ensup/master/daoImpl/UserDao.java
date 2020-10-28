@@ -42,7 +42,7 @@ public class UserDao implements IUserDao {
 			rs = st.executeQuery(sql);
 			
 			if(rs.next()) {
-				user = new User(rs.getInt("id"), rs.getString("login"), rs.getString("password"), rs.getString("profil"));
+				user = new User(rs.getString("login"), rs.getString("password"), rs.getString("profil"));
 			}
 			
 			cn.close();

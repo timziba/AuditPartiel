@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ensup.master.metier.Student;
 import com.ensup.master.metier.User;
+import com.ensup.master.serviceImpl.IStudentService;
 import com.ensup.master.serviceImpl.StudentService;
 
 /**
@@ -20,7 +21,7 @@ import com.ensup.master.serviceImpl.StudentService;
 public class RechercheEtudiantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private User user = null;
-	private StudentService studentService;
+	private IStudentService studentService;
 	private RequestDispatcher dispatcher = null;
 
 	/**
