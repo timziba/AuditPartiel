@@ -13,13 +13,13 @@ import com.ensup.master.metier.User;
  * @author DANON
  *
  */
-public class UserService {
+public class UserService implements IUserService {
 
 
 	//IUserDao idao;
-	private UserDao2 dao;
+	private IUserDao2 dao;
 	
-	public UserService() {
+	public UserService(IUserDao2 dao) {
 		
 		this.dao = new UserDao2();
 		}
@@ -34,6 +34,7 @@ public class UserService {
 	 * @param password
 	 * @return 
 	 */
+	@Override
 	public User getUser(String login, String password) {
 		return dao.getUser(login, password);
 	}
