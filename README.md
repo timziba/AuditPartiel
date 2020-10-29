@@ -33,7 +33,7 @@ Installer [mysql](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
   
   Exécuter la commande ```mvn clean package```
   
-  Récupérer et déployer dans tomcat le fichier "AuditPartiel/gesensup-web/target/gesensup-web.war"
+  Récupérer et déployer dans tomcat le fichier "AuditPartiel/gesensup-web/target/gesEnsup-web.war"
   
 ### ETAPE 4 : 
   Accéder à "localhost:8080/gesensup-web/"
@@ -44,4 +44,20 @@ Installer [mysql](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
   > 
   > password : admin
 
+### ETAPE 5
+
+  Les log sont par défaut dans le fichier logs/app.log de la racine de la machine, soit
+  > linux : "/home/logs/app.log"
+  > windows : "C:\logs\app.log"
+  
+  Pour configurer un chemin spécifique, accéder au fichier log4j2.xml "AuditPartiel/gesEnsup-dao/src/main/resources/log4j2.xml"
+  Modifier l'attribut FileName de la balise File
+  
+  ``` 
+  <File name="LogFile" FileName="chemin_du_fichier_log">
+      <PatternLayout>
+        <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+      </PatternLayout>
+    </File>
+   ```
 
